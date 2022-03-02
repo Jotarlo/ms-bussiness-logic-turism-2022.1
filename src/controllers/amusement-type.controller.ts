@@ -14,7 +14,7 @@ import {
 import {AmusementType} from '../models';
 import {AmusementTypeRepository} from '../repositories';
 
-export class AmusementController {
+export class AmusementTypeController {
   constructor(
     @repository(AmusementTypeRepository)
     public amusementTypeRepository : AmusementTypeRepository,
