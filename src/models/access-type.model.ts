@@ -1,8 +1,8 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
-import {Amusement} from './amusement.model';
+import {Site} from './site.model';
 
 @model()
-export class AmusementType extends Entity {
+export class AccessType extends Entity {
   @property({
     type: 'number',
     id: true,
@@ -16,16 +16,16 @@ export class AmusementType extends Entity {
   })
   name: string;
 
-  @hasMany(() => Amusement)
-  amusements: Amusement[];
+  @hasMany(() => Site)
+  sites: Site[];
 
-  constructor(data?: Partial<AmusementType>) {
+  constructor(data?: Partial<AccessType>) {
     super(data);
   }
 }
 
-export interface AmusementTypeRelations {
+export interface AccessTypeRelations {
   // describe navigational properties here
 }
 
-export type AmusementTypeWithRelations = AmusementType & AmusementTypeRelations;
+export type AccessTypeWithRelations = AccessType & AccessTypeRelations;
