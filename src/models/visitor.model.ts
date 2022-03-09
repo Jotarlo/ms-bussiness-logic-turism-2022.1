@@ -31,6 +31,12 @@ export class Visitor extends Entity {
   })
   email: string;
 
+  @property({
+    type: 'string',
+    required: true
+  })
+  document: string;
+
   @hasMany(() => Site, {through: {model: () => VisitorSite}})
   sites: Site[];
 

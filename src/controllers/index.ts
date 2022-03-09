@@ -20,3 +20,8 @@ export * from './visitor-site.controller';
 export * from './visitor-site-comment.controller';
 export * from './visitor-site-qualify.controller';
 export * from './qualify-visitor-site.controller';
+export * from './access-type.controller';
+export * from './site.controller';
+export * from './amusement.controller';
+export * from './amusement-images.controller';
+export * from './visitor.controller';
