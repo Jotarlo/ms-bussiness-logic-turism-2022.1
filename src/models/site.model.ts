@@ -5,7 +5,24 @@ import {City} from './city.model';
 import {VisitorSite} from './visitor-site.model';
 import {Visitor} from './visitor.model';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_site_access_type: {
+        name: 'fk_site_access_type',
+        entity: 'AccessType',
+        entityKey: 'id',
+        foreignKey: 'accessTypeId',
+      },
+      fk_site_city: {
+        name: 'fk_site_city',
+        entity: 'City',
+        entityKey: 'id',
+        foreignKey: 'cityId',
+      }
+    },
+  },
+})
 export class Site extends Entity {
   @property({
     type: 'number',
