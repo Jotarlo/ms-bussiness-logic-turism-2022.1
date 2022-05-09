@@ -1,23 +1,31 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where
+  Where,
 } from '@loopback/repository';
 import {
-  del, get,
-  getModelSchemaRef, param, patch, post, put, requestBody,
-  response
+  del,
+  get,
+  getModelSchemaRef,
+  param,
+  patch,
+  post,
+  put,
+  requestBody,
+  response,
 } from '@loopback/rest';
 import {City} from '../models';
 import {CityRepository} from '../repositories';
 
+@authenticate('adminStrategy')
 export class CityController {
   constructor(
     @repository(CityRepository)
-    public cityRepository : CityRepository,
+    public cityRepository: CityRepository,
   ) {}
 
   @post('/cities')
@@ -46,17 +54,17 @@ export class CityController {
     return this.cityRepository.create(city);
   }
 
+  @authenticate.skip()
   @get('/cities/count')
   @response(200, {
     description: 'City model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(City) where?: Where<City>,
-  ): Promise<Count> {
+  async count(@param.where(City) where?: Where<City>): Promise<Count> {
     return this.cityRepository.count(where);
   }
 
+  @authenticate.skip()
   @get('/cities')
   @response(200, {
     description: 'Array of City model instances',
@@ -69,9 +77,7 @@ export class CityController {
       },
     },
   })
-  async find(
-    @param.filter(City) filter?: Filter<City>,
-  ): Promise<City[]> {
+  async find(@param.filter(City) filter?: Filter<City>): Promise<City[]> {
     return this.cityRepository.find(filter);
   }
 
@@ -105,7 +111,7 @@ export class CityController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(City, {exclude: 'where'}) filter?: FilterExcludingWhere<City>
+    @param.filter(City, {exclude: 'where'}) filter?: FilterExcludingWhere<City>,
   ): Promise<City> {
     return this.cityRepository.findById(id, filter);
   }
