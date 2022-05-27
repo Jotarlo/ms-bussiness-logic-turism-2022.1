@@ -25,3 +25,5 @@ export * from './site.controller';
 export * from './amusement.controller';
 export * from './amusement-images.controller';
 export * from './visitor.controller';
+export * from './file-upload.controller';
+export * from './file-download.controller';
