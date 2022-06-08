@@ -100,6 +100,7 @@ export class CityController {
     return this.cityRepository.updateAll(city, where);
   }
 
+  @authenticate.skip()
   @get('/cities/{id}')
   @response(200, {
     description: 'City model instance',
